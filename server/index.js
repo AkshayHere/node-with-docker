@@ -2,6 +2,10 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 
+// Enable environment varaibles
+require('dotenv').config()
+// console.log(process.env);
+
 const db = mysql.createPool({
   host: "mysql_db", // the host name MYSQL_DATABASE: node_mysql
   user: "MYSQL_USER", // database user MYSQL_USER: MYSQL_USER
@@ -56,4 +60,4 @@ app.put("/update/:bookId", (req, res) => {
   });
 });
 
-app.listen("3006", () => {});
+app.listen(process.env.SERVER_PORT, () => {});
